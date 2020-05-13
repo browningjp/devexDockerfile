@@ -11,7 +11,9 @@ RUN yum install -y maven
 
 RUN mkdir /devex
 WORKDIR /devex
-RUN git clone https://github.com/utherp0/workshop4
+# RUN git clone https://github.com/utherp0/workshop4
+
+RUN wget https://github.com/utherp0/workshop4/tarball/master && tar -xvf master && mv utherp0-workshop4-* workshop4
 
 RUN mkdir /devexcompiled
 RUN chown -R 1001:1001 /devexcompiled
