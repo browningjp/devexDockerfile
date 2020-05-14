@@ -1,8 +1,8 @@
 FROM fedora
 
-ARG facilitatorName
-ARG facilitatorEmail
-ARG facilitatorTitle
+ARG facilitatorName=Jonny Browning
+ARG facilitatorEmail=browning@redhat.com
+ARG facilitatorTitle=Junior Solution Architect
 ARG webConsoleUrl
 
 USER root
