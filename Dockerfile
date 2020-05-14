@@ -11,7 +11,7 @@ ENV MAVEN_OPTS=-Xmx2048m -XX:MaxPermSize=128m
 
 USER root
 
-RUN yum install -y maven ansible
+RUN yum install -y maven ansible python-pip
 
 RUN mkdir /devex
 WORKDIR /devex
