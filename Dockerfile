@@ -4,12 +4,14 @@ ARG facilitatorName="Jonny Browning"
 ARG facilitatorEmail="browning@redhat.com"
 ARG facilitatorTitle="Junior Solution Architect"
 ARG webConsoleUrl
+ARG ocpUrl
+ARG ocpToken
 
 ENV MAVEN_OPTS=-Xmx2048m -XX:MaxPermSize=128m
 
 USER root
 
-RUN yum install -y maven
+RUN yum install -y maven ansible
 
 RUN mkdir /devex
 WORKDIR /devex
@@ -34,6 +36,8 @@ RUN mv /devexcompiled/advanced/ocp4devex.html /devexcompiled/advanced/index.html
 RUN mv /devexcompiled/advanced/ocp4devex.pdf /devexcompiled/ocp4devex_advanced.pdf
 
 RUN chown -R 1001:1001 /devexcompiled
+
+RUN ansible-playbook -e "ocp_url=$ocpUrl ocp_login_token=$ocpToken" /dev/playbooks/Deploy_Advanced_Course.yml
 
 EXPOSE 8080
 
