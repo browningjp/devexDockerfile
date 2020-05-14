@@ -5,25 +5,26 @@ ARG facilitatorEmail
 ARG facilitatorTitle
 ARG webConsoleUrl
 
+ENV MAVEN_OPTS=-Xmx2048m -XX:MaxPermSize=128m
+
 USER root
 
 RUN yum install -y maven
 
 RUN mkdir /devex
 WORKDIR /devex
-# RUN git clone https://github.com/utherp0/workshop4
 
 RUN curl -L https://github.com/utherp0/workshop4/tarball/master > master && tar -xvf master && mv utherp0-workshop4-* workshop4
 
 RUN mkdir /devexcompiled
 RUN chown -R 1001:1001 /devexcompiled
 
-# WORKDIR /devex/workshop4/documentationbasic
-# RUN mvn clean package -DfacilitatorName="$facilitatorName" -DfacilitatorEmail="$facilitatorEmail" -DfacilitatorTitle="$facilitatorTitle" -DwebConsoleUrl="$webConsoleUrl"
-# RUN mkdir -p /devexcompiled/basic
-# RUN cp -r ocp4devex/target/generated-docs/* /devexcompiled/basic
-# RUN mv /devexcompiled/basic/ocp4devex.html /devexcompiled/basic/index.html
-# RUN mv /devexcompiled/basic/ocp4devex.pdf /devexcompiled/ocp4devex_basic.pdf
+WORKDIR /devex/workshop4/documentationbasic
+RUN mvn clean package -DfacilitatorName="$facilitatorName" -DfacilitatorEmail="$facilitatorEmail" -DfacilitatorTitle="$facilitatorTitle" -DwebConsoleUrl="$webConsoleUrl"
+RUN mkdir -p /devexcompiled/basic
+RUN cp -r ocp4devex/target/generated-docs/* /devexcompiled/basic
+RUN mv /devexcompiled/basic/ocp4devex.html /devexcompiled/basic/index.html
+RUN mv /devexcompiled/basic/ocp4devex.pdf /devexcompiled/ocp4devex_basic.pdf
 
 WORKDIR /devex/workshop4/documentationadvanced
 RUN mvn clean package -DfacilitatorName="$facilitatorName" -DfacilitatorEmail="$facilitatorEmail" -DfacilitatorTitle="$facilitatorTitle" -DwebConsoleUrl="$webConsoleUrl"
