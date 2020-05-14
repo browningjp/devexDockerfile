@@ -1,8 +1,8 @@
 FROM fedora
 
-ARG facilitatorName=Jonny Browning
-ARG facilitatorEmail=browning@redhat.com
-ARG facilitatorTitle=Junior Solution Architect
+ARG facilitatorName="Jonny Browning"
+ARG facilitatorEmail="browning@redhat.com"
+ARG facilitatorTitle="Junior Solution Architect"
 ARG webConsoleUrl
 
 ENV MAVEN_OPTS=-Xmx2048m -XX:MaxPermSize=128m
