@@ -17,6 +17,7 @@ RUN mkdir /devex
 WORKDIR /devex
 
 RUN curl -L https://github.com/utherp0/workshop4/tarball/master > master && tar -xvf master && mv utherp0-workshop4-* workshop4
+RUN curl -L https://github.com/openshift/origin/releases/download/v1.5.1/openshift-origin-client-tools-v1.5.1-7b451fc-linux-64bit.tar.gz > oc.tar.gz && tar -xvf oc.tar.gz && mv oc/oc /bin/oc
 
 RUN mkdir /devexcompiled
 RUN chown -R 1001:1001 /devexcompiled
