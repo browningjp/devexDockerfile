@@ -37,7 +37,7 @@ RUN mv /devexcompiled/advanced/ocp4devex.pdf /devexcompiled/ocp4devex_advanced.p
 
 RUN chown -R 1001:1001 /devexcompiled
 
-RUN ansible-playbook -e "ocp_url=$ocpUrl ocp_login_token=$ocpToken" /dev/playbooks/Deploy_Advanced_Course.yml
+RUN ansible-playbook -e "ocp_url=$ocpUrl ocp_login_token=$ocpToken" /devex/workshop4/playbooks/Deploy_Advanced_Course.yml
 
 EXPOSE 8080
 
